@@ -4,7 +4,7 @@ L, W = len(grid), len(grid[0])
 def main(dx, dy):
     seen = posx = 0
     for i in range(0, L, dy):
-        seen += 1 if grid[i][posx] == '#' else 0
+        seen += grid[i][posx] == '#'
         posx = (posx + dx) % W
     return seen
 
