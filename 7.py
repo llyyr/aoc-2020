@@ -1,8 +1,11 @@
 import sys
+from functools import cache
+
 inp = [l.rstrip() for l in sys.stdin]
 bags = []
 X = 'shiny gold'
 
+@cache
 def part1(bag, bags=bags):
     for line in inp:
         i = line.split(' bags contain ')
@@ -12,7 +15,7 @@ def part1(bag, bags=bags):
             part1(i[0])
     return len(bags)
 
-
+@cache
 def part2(bag):
     for line in inp:
         i = line.split(' contain ')
@@ -25,3 +28,4 @@ def part2(bag):
             return sum(cn+part2(bn)*cn for bn, cn in zip(bn, cn))
 
 print(part1(X), part2(X))
+
