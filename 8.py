@@ -14,24 +14,21 @@ def main(P, part1=False):
             acc += n
         elif op == 'jmp':
             ip += n-1
-        elif op == 'nop':
-            pass
         ip += 1
-    if ip == len(P):
-        return acc
-    if part1:
+    if ip == len(P) or part1:
         return acc
 
 print(main(P, True))
-
 for i in range(len(P)):
-    newP = P.copy()
-    if newP[i].startswith('jmp'):
-        newP[i] = newP[i].replace('jmp', 'nop')
-    elif newP[i].startswith('nop'):
-        newP[i] = newP[i].replace('nop', 'jmp')
+    if P[i].startswith('j'):
+        P[i] = P[i].replace('jmp', 'nop')
+        x = main(P)
+        P[i] = P[i].replace('nop', 'jmp')
+    elif P[i].startswith('n'):
+        P[i] = P[i].replace('nop', 'jmp')
+        x = main(P)
+        P[i] = P[i].replace('jmp', 'nop')
     else:
         continue
-    x = main(newP)
     if x:
         print(x)

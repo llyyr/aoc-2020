@@ -6,13 +6,11 @@ X = [0]
 
 for i in range(len(l)):
     X += [X[-1] + l[i]]
-    p = False
     if i > 25:
-        for x in cb(l[i-25:i], 2):
-            if sum(x) == l[i]:
-                p = True
+        for x, y in cb(l[i-25:i], 2):
+            if x+y == l[i]:
                 break
-        if not p:
+        else:
             a = l[i]
 
 print(a)
