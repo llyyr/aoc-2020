@@ -17,8 +17,6 @@ for i in range(len(inp)):
         one += 1
     elif inp[i] - last == 3:
         three += 1
-    else:
-        print(inp[i], last, i)
 
 print(one*three)
 
