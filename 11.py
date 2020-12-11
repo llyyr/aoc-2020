@@ -1,10 +1,8 @@
 from itertools import product
-import ujson
 
 inp = [list(l.rstrip()) for l in open(0)]
 C = len(inp[0])
 R = len(inp)
-
 
 def cn_occ(x, y, l, p2):
     cn = 0
@@ -22,7 +20,7 @@ def cn_occ(x, y, l, p2):
 
 def main(l, p2):
     while True:
-        new_l = ujson.loads(ujson.dumps(l))
+        new_l = [s[:] for s in l]
         diff = False
         for x, y in product(range(R), range(C)):
             cn = cn_occ(x, y, l, p2)
@@ -34,8 +32,8 @@ def main(l, p2):
                 diff = True
         if not diff:
             break
-        l = new_l.copy()
-    return sum(R.count('#') for R in l)
+        l = new_l[:]
+    return sum(j.count('#') for j in l)
 
 print(main(inp, False))
 print(main(inp, True))
