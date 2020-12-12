@@ -1,56 +1,30 @@
 inp = [(k[0], int(k[1:])) for k in open(0)]
 
-x, y = 0, 0
-cur = 'E'
-dirs = 'E S W N'.split()
+dirs = {'E': 1j, 'W': -1, 'N': 1j, 'S': -1j}
+rotate = {'L': 1j, 'R': -1j}
+cur_dir = 1
+cur_xy = 0
 
 for c, n in inp:
-    if c == 'N':
-        y += n
-    elif c == 'S':
-        y -= n
-    elif c == 'E':
-        x += n
-    elif c == 'W':
-        x -= n
-    elif c == 'L':
-        cur = dirs[(dirs.index(cur) + n//90)%4]
-    elif c == 'R':
-        cur = dirs[(dirs.index(cur) - n//90)%4]
+    if c in dirs:
+        cur_xy += dirs[c] * n
+    elif c in rotate:
+        cur_dir *= rotate[c] ** (n//90)
     elif c == 'F':
-        if cur == 'E':
-            x += n
-        if cur == 'W':
-            x -=n
-        if cur == 'N':
-            y +=n
-        if cur == 'S':
-            y -= n
+        cur_xy += cur_dir * n
 
-print(abs(x)+abs(y))
+print(int(abs(cur_xy.real)+abs(cur_xy.imag)))
 
-x, y = 0, 0
-wx, wy = 10, 1
+
+w_xy = 10 + 1j
+cur_xy = 0
 
 for c, n in inp:
-    if c == 'N':
-        wy += n
-    elif c == 'S':
-        wy -= n
-    elif c == 'E':
-        wx += n
-    elif c == 'W':
-        wx -= n
-    elif c == 'L':
-        while n:
-            wx, wy = -wy, wx
-            n -= 90
-    elif c == 'R':
-        while n:
-            wx, wy = wy, -wx
-            n -= 90
+    if c in dirs:
+        w_xy += dirs[c] * n
+    elif c in rotate:
+        w_xy *= rotate[c] ** (n//90)
     elif c == 'F':
-        x += n*wx
-        y += n*wy
+        cur_xy += w_xy * n
 
-print(abs(x)+abs(y))
+print(int(abs(cur_xy.real)+abs(cur_xy.imag)))
