@@ -1,7 +1,8 @@
 inp = [(k[0], int(k[1:])) for k in open(0)]
 
-dirs = {'E': 1j, 'W': -1, 'N': 1j, 'S': -1j}
+dirs = {'E': 1, 'W': -1, 'N': 1j, 'S': -1j}
 rotate = {'L': 1j, 'R': -1j}
+
 cur_dir = 1
 cur_xy = 0
 
