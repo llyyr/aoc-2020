@@ -20,15 +20,14 @@ def solve(inp, p1):
     mask = None
     for l in inp:
         if l.startswith('mask'):
-            mask = l.split(' = ')[1]
+            mask = l.split(' = ')[-1]
+            continue
+        addr, val = map(int, l[4:].replace(']', '').split(' = '))
+        if p1:
+            mem[addr] = domask(val, mask, 'X')
         else:
-            addr, val = l[4:].replace(']', '').split(' = ')
-            addr, val = int(addr), int(val)
-            if p1:
-                mem[addr] = domask(val, mask, 'X')
-            else:
-                for addr in domask(addr, mask, '0'):
-                    mem[addr] = val
+            for addr in domask(addr, mask, '0'):
+                mem[addr] = val
     return sum(mem.values())
 
 print(solve(inp, True))
