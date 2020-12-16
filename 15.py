@@ -1,4 +1,4 @@
-inp = list(map(int, '1,17,0,10,18,11,6'.split(',')))
+inp = [1,17,0,10,18,11,6]
 t = {}
 idx = len(inp)+1
 num = 0
@@ -20,3 +20,4 @@ while True:
     elif idx == 30000000:
         print(num)
         break
+
