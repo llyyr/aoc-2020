@@ -11,17 +11,17 @@ for tile in inp:
         num = int(cur[0][-5:-1])
         tiles[num] = cur[1:]
 
-mxy = []
-for y, l in enumerate(MONSTER.splitlines()):
-    for x, c in enumerate(l):
-        if c == '#':
-            mxy.append((x,y))
-
 orient = {}
 for num, tile in tiles.items():
     for j in range(8):
         orient[(num,j)] = tile
         tile = list(reversed(tile)) if j%2==0 else [''.join(c) for c in zip(*tile)]
+
+mxy = []
+for y, l in enumerate(MONSTER.splitlines()):
+    for x, c in enumerate(l):
+        if c == '#':
+            mxy.append((x,y))
 
 mw, mh = max(x for x,y in mxy)+1, max(y for x,y in mxy)+1
 k = int(len(tiles)**0.5)
