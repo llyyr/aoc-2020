@@ -30,7 +30,7 @@ def pid(x):
 def cid(x):
     pass
 
-passports = open('4.in').read().split('\n\n')
+passports = open(0).read().split('\n\n')
 req = 'byr iyr eyr hgt hcl ecl pid'.split()
 
 p1 = p2 = 0

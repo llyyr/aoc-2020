@@ -1,4 +1,4 @@
-inp = open('6.in').read().split('\n\n')
+inp = open(0).read().split('\n\n')
 p1 = p2 = 0
 for l in inp:
     c = [set(q) for q in l.split()]

@@ -1,4 +1,4 @@
-passports = open('4.in').read().split('\n\n')
+passports = open(0).read().split('\n\n')
 
 def main(part2=False):
     total = 0

@@ -1,4 +1,4 @@
-grid = list(map(str, (l.rstrip() for l in open('3.in'))))
+grid = list(map(str, (l.rstrip() for l in open(0))))
 L, W = len(grid), len(grid[0])
 
 def main(dx, dy):
