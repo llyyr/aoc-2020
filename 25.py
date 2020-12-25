@@ -1,6 +1,4 @@
-p,x = 20201227,0
-while True:
-    if pow(7,x,p)==12578151:
-        print(pow(5051300,x,p))
-        break
-    x+=1
+p = 20201227
+for i in range(p):
+    if pow(7,i,p)==12578151:
+        exit(print(pow(5051300,i,p)))
