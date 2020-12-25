@@ -1,7 +1,7 @@
 from functools import cache
 
 rs, msgs = open(0).read().split('\n\n')
-rs = {r.split(': ')[0]: r.split(': ')[1]  for r in rs.split('\n')}
+rs = dict([r.split(': ', 1) for r in rs.split('\n')])
 msgs = msgs.split('\n')
 
 @cache
